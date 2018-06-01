@@ -74,6 +74,21 @@ describe 'visitor visits hiking show' do
     visit trip_path(trip)
 
     expect(page).to have_content("Shortest trail length: #{trail1.length}")
+  end
+#   As a visitor,
+# when I visit a hiking trip's page,
+# I can click on the name of a trail
+# to see a show page for that specific trail.
+  it 'can navigate to a trail show' do
+    trip = Trip.create(name: 'Grays and Torys')
+    trail1 = trip.trails.create(name: 'North trail', length: 5, address: '123 Mountain St')
+    trail2 = trip.trails.create(name: 'South trail', length: 7, address: '321 Mountain St')
+
+    visit trip_path(trip)
+
+    click_on trail1.name
+
+    expect(current_path).to eq(trail_path(trail1))
 
   end
 end

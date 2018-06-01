@@ -6,6 +6,6 @@
 
 <ul>
   <% @trails.each do |trail| %>
-  <li><%= trail.name %> <%= trail.length %> <%= trail.address %></li>
+  <li><%= link_to trail.name, trail_path(trail) %> <%= trail.length %> <%= trail.address %></li>
   <% end %>
 </ul>
