@@ -89,6 +89,5 @@ describe 'visitor visits hiking show' do
     click_on trail1.name
 
     expect(current_path).to eq(trail_path(trail1))
-
   end
 end
