@@ -1,7 +1,4 @@
 class Trip < ApplicationRecord
-  has_many :trail_trips #, dependent: :delete_all
+  has_many :trail_trips
   has_many :trails, through: :trail_trips
-
-
-
 end
