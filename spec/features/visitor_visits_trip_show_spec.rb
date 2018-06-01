@@ -53,7 +53,7 @@ describe 'visitor visits hiking show' do
 # when I visit a hiking trip's page,
 # I see the longest hiking distance
 # from all trails on that hiking trip
-  it 'shows the longest trail' do
+  it 'shows the longest trail length' do
     trip = Trip.create(name: 'Grays and Torys')
     trail1 = trip.trails.create(name: 'North trail', length: 5, address: '123 Mountain St')
     trail2 = trip.trails.create(name: 'South trail', length: 7, address: '321 Mountain St')
@@ -61,5 +61,19 @@ describe 'visitor visits hiking show' do
     visit trip_path(trip)
 
     expect(page).to have_content("Longest trail length: #{trail2.length}")
+  end
+#   As a visitor,
+# when I visit a hiking trip's page,
+# I see the shortest hiking distance
+# from all trails on that hiking trip
+  it 'shows the shortest trail length' do
+    trip = Trip.create(name: 'Grays and Torys')
+    trail1 = trip.trails.create(name: 'North trail', length: 5, address: '123 Mountain St')
+    trail2 = trip.trails.create(name: 'South trail', length: 7, address: '321 Mountain St')
+
+    visit trip_path(trip)
+
+    expect(page).to have_content("Shortest trail length: #{trail1.length}")
+
   end
 end
