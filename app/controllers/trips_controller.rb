@@ -7,5 +7,6 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @trails = @trip.trails
     @total = @trails.sum(:length)
+    @average = @trails.average(:length)
   end
 end

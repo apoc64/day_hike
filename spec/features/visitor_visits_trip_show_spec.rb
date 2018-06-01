@@ -34,4 +34,19 @@ describe 'visitor visits hiking show' do
 
     expect(page).to have_content("Total length: #{total}")
   end
+#   As a visitor,
+# when I visit a hiking trip's page,
+# I see the average hiking distance
+# of all trails on that hiking trip
+  it 'shows the average trail distance' do
+    trip = Trip.create(name: 'Grays and Torys')
+    trail1 = trip.trails.create(name: 'North trail', length: 5, address: '123 Mountain St')
+    trail2 = trip.trails.create(name: 'South trail', length: 7, address: '321 Mountain St')
+
+    visit trip_path(trip)
+
+    average = (trail1.length + trail2.length) / 2
+
+    expect(page).to have_content("Average length: #{average}")
+  end
 end
