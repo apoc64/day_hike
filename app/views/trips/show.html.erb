@@ -1,1 +1,7 @@
 <h1><%= @trip.name %></h1>
+
+<ul>
+  <% @trails.each do |trail| %>
+  <li><%= trail.name %> <%= trail.length %> <%= trail.address %></li>
+  <% end %>
+</ul>
